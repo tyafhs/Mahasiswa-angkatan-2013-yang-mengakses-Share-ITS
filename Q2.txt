@@ -1,0 +1,11 @@
+import pyodbc 
+conn = pyodbc.connect("Driver={SQL Server};"
+                      "Server=FATHIYA;"
+                      "Database=db_final;"
+                      "Trusted_Connection=yes;")
+
+cursor = conn.cursor()
+sql = cursor.execute("SELECT COUNT(DISTINCT Mahasiswa) From dbo.MHS WHERE Mahasiswa LIKE '% [0-9][0-9]13%'")
+result = sql.fetchall() 
+for row in result:
+     print(row)
